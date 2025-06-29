@@ -1,59 +1,47 @@
-﻿/* The following are function declarations. They _declare_ that the functions
-exist but they do not _define_ what the functions actually do (the definitions
-appear after the main function). By declaring these functions here, they may be
-called in the main before they are defined.
+﻿#include <iostream> 
+/* function to read number from standard input (keyboard) */ 
+int getNumber();  
 
-Note: function1 expects an int type, whereas function2 expects a pointer to an int */
+/* function to calculate the sum of two numbers */  
+int calculateSum(int, int);  
 
-#include <iostream>
-using namespace std;
-
-void function1(int); 
-void function2(int*);
-
-int main() {
-	int number = 10;
-
-	/* C1. display the contents of number to the screen */
-	cout << "Number is " << number << endl;
-
-	/* C2. display the address of variable number to the screen */
-	int* numberptr = &number;
-	cout << "Address of number is " << numberptr << endl;
+/* function to display details to the screen */ 
+void displayDetails(); 
 
 
-	/* C3. call function1 */
-	function1(number);
-	/* C4. display the contents of number to the screen */
-	cout << "The contents of number is " << number << endl;
-	/* C5. call function2 */
-	function2(numberptr);
-	/* C6. display the contents of number to the screen */
-	cout << "The contents of number is " << number << endl;
+int main() { 
+		int num1 = 0; /* first number to be entered by user */  
 
-	return 0;
-}
+		int num2 = 0; /* second number to be entered by user */  
 
-void function1(int number) { 
-	
-	/* C7. increment number by one */ 
-	number = number + 1;
-	/* C8. display the contents of number to the screen (should be 11) */ 
-	cout << "New number is " << number << endl;
-	/* C9. display the address of number to the screen */ 
-	int* nptr = nullptr;
-	nptr = &number;
-	cout << "The address of number is " << nptr << endl;
-}
-	
+		int sum = 0; /* stores sum of two numbers */  
 
-void function2(int* numberPtr) {
-	/* C10. display the address of number to the screen (should be the same address as you displayed first in main) */ 
-	cout << "The address of number is" << numberPtr << endl;
-	/* C11. display the value that the pointer numberPtr points to */ 
-	cout << " The value of the pointer numberPtr points to is " << *numberPtr << endl;
-	/* C12. increment the value stored in number */ 
-	*numberPtr = *numberPtr + 1;
-	/* C13. display the contents of number to the screen */
-	cout << "The contents of number is " << *numberPtr << endl;
+		displayDetails(); /* prompt for and read first number */ 
+
+		std::cout << "Please enter first number : "; 
+		num1 = getNumber(); /* prompt for and read second number */ 
+
+		std::cout << "Please enter second number: "; 
+		num2 = getNumber(); /* add two numbers together and display to screen */ 
+
+		sum = calculateSum(num1, num2); 
+		std::cout << std::endl << "\nSum of " << num1 << " and " << num2 << " is: " << sum << std::endl << std::endl; 
+
+		return 0; }  /* function to read number from standard input (keyboard) */ 
+int getNumber() { 
+			int num; 
+			std::cin >> num; 
+			return num; 
+}  /* function to calculate the sum of two numbers */ 
+
+
+int calculateSum(int number1, int number2) { 
+			return number1 + number2; 
+} /* function to display details to the screen */ 
+
+
+void displayDetails() { 
+	std::cout << "Author : Your Name" << std::endl; 
+	std::cout << "Stud ID : Your Student Id" << std::endl; 
+	std::cout << "Email : Your Email" << std::endl; 
 }
