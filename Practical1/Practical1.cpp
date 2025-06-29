@@ -5,6 +5,9 @@ called in the main before they are defined.
 
 Note: function1 expects an int type, whereas function2 expects a pointer to an int */
 
+#include <iostream>
+using namespace std;
+
 void function1(int); 
 void function2(int*);
 
@@ -12,23 +15,45 @@ int main() {
 	int number = 10;
 
 	/* C1. display the contents of number to the screen */
+	cout << "Number is " << number << endl;
+
 	/* C2. display the address of variable number to the screen */
+	int* numberptr = &number;
+	cout << "Address of number is " << numberptr << endl;
+
+
 	/* C3. call function1 */
+	function1(number);
 	/* C4. display the contents of number to the screen */
+	cout << "The contents of number is " << number << endl;
 	/* C5. call function2 */
+	function2(numberptr);
 	/* C6. display the contents of number to the screen */
+	cout << "The contents of number is " << number << endl;
 
 	return 0;
 }
 
 void function1(int number) { 
+	
 	/* C7. increment number by one */ 
-	/* C8. display the contents of number to the screen (should be 11) */  
-	/* C9. display the address of number to the screen */ }
+	number = number + 1;
+	/* C8. display the contents of number to the screen (should be 11) */ 
+	cout << "New number is " << number << endl;
+	/* C9. display the address of number to the screen */ 
+	int* nptr = nullptr;
+	nptr = &number;
+	cout << "The address of number is " << nptr << endl;
+}
+	
 
 void function2(int* numberPtr) {
-	/* C10. display the address of number to the screen (should be the same address as you displayed first in main) */  
-	/* C11. display the value that the pointer numberPtr points to */  
+	/* C10. display the address of number to the screen (should be the same address as you displayed first in main) */ 
+	cout << "The address of number is" << numberPtr << endl;
+	/* C11. display the value that the pointer numberPtr points to */ 
+	cout << " The value of the pointer numberPtr points to is " << *numberPtr << endl;
 	/* C12. increment the value stored in number */ 
+	*numberPtr = *numberPtr + 1;
 	/* C13. display the contents of number to the screen */
+	cout << "The contents of number is " << *numberPtr << endl;
 }
